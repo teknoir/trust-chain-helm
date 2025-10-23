@@ -3,6 +3,16 @@ entries:
   trust-chain:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2025-10-23T11:47:47.915950851Z"
+    description: HelmChart to deploy the Trust Chain resources to a Teknoir Cluster.
+    digest: 7571dab9603faf9b81d884e327f5410d148438337a8c3494d707ddfcaeb984ba
+    name: trust-chain
+    type: application
+    urls:
+    - https://github.com/teknoir/trust-chain-helm/releases/download/trust-chain-0.0.0-alpha.2/trust-chain-0.0.0-alpha.2.tgz
+    version: 0.0.0-alpha.2
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2025-10-23T11:42:44.388781354Z"
     description: HelmChart to deploy the Trust Chain resources to a Teknoir Cluster.
     digest: 230a07f3df0f9705e0a1b081f7c0c56a2c37dc5348ac70854579453649a78fc9
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/teknoir/trust-chain-helm/releases/download/trust-chain-0.0.0-alpha.1/trust-chain-0.0.0-alpha.1.tgz
     version: 0.0.0-alpha.1
-generated: "2025-10-23T11:42:44.388788255Z"
+generated: "2025-10-23T11:47:47.915960909Z"
