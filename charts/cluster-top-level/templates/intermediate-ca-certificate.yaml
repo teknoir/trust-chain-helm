@@ -1,0 +1,24 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: teknoir-intermediate-ca
+  namespace: {{ .Release.Namespace }}
+spec:
+  isCA: true
+  commonName: Teknoir Intermediate CA
+  secretName: teknoir-intermediate-ca
+  privateKey:
+    algorithm: RSA
+    size: 4096
+    rotationPolicy: Never
+  duration: 26280h   # ~3y
+  renewBefore: 720h  # 30d
+  usages:
+    - cert sign
+    - crl sign
+    - digital signature
+    - key encipherment
+  issuerRef:
+    name: teknoir-root-ca
+    kind: ClusterIssuer

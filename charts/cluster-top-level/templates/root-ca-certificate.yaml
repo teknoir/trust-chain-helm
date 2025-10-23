@@ -1,0 +1,21 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: teknoir-root-ca
+  namespace: {{ .Release.Namespace }}
+spec:
+  isCA: true
+  commonName: Teknoir Root CA
+  subject:
+    organizations: ["Teknoir"]
+  secretName: teknoir-root-ca
+  privateKey:
+    algorithm: RSA
+    size: 4096
+    rotationPolicy: Never
+  duration: 87600h    # ~10y
+  renewBefore: 720h   # 30d
+  issuerRef:
+    name: teknoir-selfsigned-bootstrap
+    kind: Issuer
