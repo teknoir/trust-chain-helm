@@ -1,6 +1,28 @@
 apiVersion: v1
 entries:
+  teamspace-ca:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-10-23T12:47:09.987369831Z"
+    description: HelmChart to deploy the Teamspace CA resources to a Teknoir Cluster
+      namespace.
+    digest: 99418e512cd1f379ce7c09a0bfaa8903bfad4cc70d490ebd0a5d9fd8c9d671b9
+    name: teamspace-ca
+    type: application
+    urls:
+    - https://github.com/teknoir/trust-chain-helm/releases/download/teamspace-ca-0.0.0-alpha.1/teamspace-ca-0.0.0-alpha.1.tgz
+    version: 0.0.0-alpha.1
   trust-chain:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2025-10-23T12:47:10.144437097Z"
+    description: HelmChart to deploy the Trust Chain resources to a Teknoir Cluster.
+    digest: 683854f3402f41a297fe1f1cd236bd82b8586e51f2eb9cc2792c9a72fa9a3b1b
+    name: trust-chain
+    type: application
+    urls:
+    - https://github.com/teknoir/trust-chain-helm/releases/download/trust-chain-0.0.0-alpha.4/trust-chain-0.0.0-alpha.4.tgz
+    version: 0.0.0-alpha.4
   - apiVersion: v2
     appVersion: 0.0.1
     created: "2025-10-23T11:52:01.220464834Z"
@@ -31,4 +53,4 @@ entries:
     urls:
     - https://github.com/teknoir/trust-chain-helm/releases/download/trust-chain-0.0.0-alpha.1/trust-chain-0.0.0-alpha.1.tgz
     version: 0.0.0-alpha.1
-generated: "2025-10-23T11:52:01.220486744Z"
+generated: "2025-10-23T12:47:10.144466244Z"
