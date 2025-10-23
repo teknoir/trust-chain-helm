@@ -1,0 +1,24 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ .Release.Namespace }}-ca
+  namespace: {{ .Release.Namespace }}
+spec:
+  isCA: true
+  commonName: Teamspace {{ .Release.Namespace }} CA
+  secretName: {{ .Release.Namespace }}-ca
+  privateKey:
+    algorithm: RSA
+    size: 4096
+    rotationPolicy: Never
+  duration: 26280h   # ~3y
+  renewBefore: 720h  # 30d
+  usages:
+    - cert sign
+    - crl sign
+    - digital signature
+    - key encipherment
+  issuerRef:
+    name: teknoir-intermediate-ca
+    kind: ClusterIssuer

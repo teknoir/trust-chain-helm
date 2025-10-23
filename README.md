@@ -1,1 +1,1 @@
-charts/cluster-top-level/README.md
+charts/trust-chain/README.md
