@@ -3,12 +3,15 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: teknoir-root-ca
-  namespace: {{ .Release.Namespace }}
+  namespace: cert-manager # Root CA is stored in cert-manager namespace
 spec:
   isCA: true
   commonName: Teknoir Root CA
   subject:
     organizations: ["Teknoir"]
+    country: ["US"]
+    Province: ["Texas"]
+    locality: ["Houston"]
   secretName: teknoir-root-ca
   privateKey:
     algorithm: RSA

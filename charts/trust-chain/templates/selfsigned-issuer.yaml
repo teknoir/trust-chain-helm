@@ -3,6 +3,6 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: teknoir-selfsigned-bootstrap
-  namespace: {{ .Release.Namespace }}
+  namespace: cert-manager
 spec:
   selfSigned: {}
