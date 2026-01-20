@@ -1,6 +1,6 @@
 ---
 apiVersion: cert-manager.io/v1
-kind: Issuer
+kind: ClusterIssuer # ClusterIssuer so it can issue certificates in istio-system
 metadata:
   name: {{ .Release.Namespace }}-ca
   namespace: {{ .Release.Namespace }}

@@ -1,0 +1,87 @@
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: trust-chain
+  namespace: teknoir-system
+spec:
+  repo: https://teknoir.github.io/trust-chain-helm
+  chart: trust-chain
+  version: 0.0.0-alpha.5
+  targetNamespace: teknoir-system
+  valuesContent: |-
+    # Example for minimal configuration
+    #test: nonsense
+    
+
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: teamspace-ca
+  namespace: demonstrations
+spec:
+  repo: https://teknoir.github.io/trust-chain-helm
+  chart: teamspace-ca
+  version: 0.0.0-alpha.1
+  targetNamespace: demonstrations
+  valuesContent: |-
+    # Example for minimal configuration
+
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: device-lobby-client-cert
+  namespace: demonstrations
+spec:
+  secretName: device-lobby-client-cert
+  commonName: device-lobby
+  subject:
+    organizations: ["Teknoir", "demonstrations"]
+  uris:
+    - spiffe://teknoir.dev/ns/demonstrations/device/device-lobby
+  usages:
+    - digital signature
+    - key encipherment
+    - client auth
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 2048
+    rotationPolicy: Always
+  duration: 4380h    # ~6m
+  renewBefore: 2190h  # 3m
+  issuerRef:
+    kind: ClusterIssuer
+    name: demonstrations-ca
+
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: test-device-client-cert
+  namespace: demonstrations
+spec:
+  secretName: test-device-client-cert
+  commonName: test-device@demonstrations-teknoir.dev
+  subject:
+    organizations: ["Teknoir", "demonstrations"]
+  uris:
+    - spiffe://teknoir.dev/ns/demonstrations/device/test-device
+  usages:
+    - digital signature
+    - key encipherment
+    - client auth
+  privateKey:
+    algorithm: RSA
+    encoding: PKCS1
+    size: 2048
+    rotationPolicy: Never
+  duration: 26280h   # ~3y
+  renewBefore: 720h  # 30d
+  issuerRef:
+    kind: ClusterIssuer
+    name: demonstrations-ca

@@ -118,4 +118,14 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: teknoir-intermediate-ca
-```# trust-chain-helm
+```
+
+## Extracting JWKS from Kubernetes Secret
+
+To generate JWKS from a Kubernetes TLS secret using openssl:
+
+```bash
+./extract-jwks.sh
+```
+
+This will save the JWKS to `./jwks/jwks.json`.
