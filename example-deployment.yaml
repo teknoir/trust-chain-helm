@@ -54,7 +54,7 @@ spec:
   duration: 4380h    # ~6m
   renewBefore: 2190h  # 3m
   issuerRef:
-    kind: ClusterIssuer
+    kind: Issuer
     name: demonstrations-ca
 
 
@@ -83,5 +83,5 @@ spec:
   duration: 26280h   # ~3y
   renewBefore: 720h  # 30d
   issuerRef:
-    kind: ClusterIssuer
+    kind: Issuer
     name: demonstrations-ca
