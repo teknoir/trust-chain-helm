@@ -22,3 +22,20 @@ spec:
   issuerRef:
     name: teknoir-intermediate-ca
     kind: ClusterIssuer
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ .Release.Namespace }}-wildcard-crt
+  namespace: cert-manager
+spec:
+  secretName: {{ .Release.Namespace }}-wildcard-crt
+  issuerRef:
+    kind: Issuer
+    name: {{ .Release.Namespace }}-ca
+  dnsNames:
+    - '{{- printf "%s.%s" .Release.Namespace .Values.domain -}}'
+    - '{{- printf "*.%s.%s" .Release.Namespace .Values.domain -}}'
+  # can't have more than one wildcard, otherwise this error will appear
+  # urn:ietf:params:acme:error:rejectedIdentifier: [dns: *.*.demonstrations.teknoir.dev] Error creating new order :: Domain name has more than one wildcard
